@@ -1,0 +1,33 @@
+# Minimal Requirements for ASL Translator Website
+# Install with: pip install -r requirements-minimal.txt
+
+# Web Framework
+Flask==2.3.3
+gunicorn==21.2.0
+
+# Machine Learning & AI
+tensorflow==2.13.0
+tensorflow-intel==2.13.0
+keras==2.13.1
+mediapipe==0.10.14
+
+# Computer Vision
+opencv-python==4.8.1.78
+opencv-contrib-python==4.11.0.86
+
+# Data Processing
+numpy==1.24.3
+pillow==12.0.0
+scipy==1.15.3
+
+# Audio & Text-to-Speech
+gTTS==2.5.4
+sounddevice==0.5.3
+pygame==2.6.1
+
+# Utilities
+requests==2.32.5
+python-dateutil==2.9.0.post0
+
+# Visualization (Optional)
+matplotlib==3.10.7

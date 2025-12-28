@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time ASL Translator - SignSpeak</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/translate.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo.png" alt="SignSpeak Logo" width="40" height="40">
+                <span>SignSpeak</span>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="translate.html" class="nav-link active">Translate</a>
+                <a href="learn.html" class="nav-link">Learn</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="translate-container">
+        <div class="translate-header">
+            <h1>Real-time ASL Translator</h1>
+            <p>Use your camera to translate ASL signs into text instantly</p>
+        </div>
+
+        <div class="translator-interface">
+            <div class="video-section">
+                <div class="video-container">
+                    <video id="webcamVideo" autoplay muted playsinline></video>
+                    <canvas id="outputCanvas"></canvas>
+                    <div class="video-overlay">
+                        <div class="status-indicator" id="statusIndicator">
+                            <i class="fas fa-circle"></i>
+                            <span>Camera Ready</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="video-controls">
+                    <button class="control-btn" id="startBtn">
+                        <i class="fas fa-play"></i>
+                        Start Translation
+                    </button>
+                    <button class="control-btn" id="stopBtn" disabled>
+                        <i class="fas fa-stop"></i>
+                        Stop Translation
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-card">
+                    <h3><i class="fas fa-text-width"></i> Translation Output</h3>
+                    <div class="text-output" id="textOutput">
+                        <p class="placeholder-text">Your ASL translation will appear here...</p>
+                    </div>
+                    <div class="output-actions">
+                        <button class="action-btn" id="clearBtn">
+                            <i class="fas fa-trash"></i>
+                            Clear
+                        </button>
+                        <button class="action-btn" id="copyBtn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+                <div class="stats-card">
+                    <h3><i class="fas fa-chart-line"></i> Translation Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Confidence</span>
+                            <span class="stat-value" id="confidenceValue">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Signs Detected</span>
+                            <span class="stat-value" id="signsCount">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Accuracy</span>
+                            <span class="stat-value" id="accuracyValue">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions-section">
+            <div class="instructions-card">
+                <h3><i class="fas fa-info-circle"></i> How to Use</h3>
+                <div class="instructions-grid">
+                    <div class="instruction-item">
+                        <div class="instruction-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <div class="instruction-content">
+                            <h4>Position Camera</h4>
+                            <p>Make sure your camera is at eye level and you're well-lit</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <div class="instruction-content">
+                            <h4>Show Signs Clearly</h4>
+                            <p>Position your hand clearly in frame with good lighting</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="instruction-content">
+                            <h4>Start Translating</h4>
+                            <p>Click "Start Translation" and begin signing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/images/logo.png" alt="SignSpeak Logo">
+                        <span>SignSpeak</span>
+                    </div>
+                    <p class="footer-tagline">"Communicate Beyond Words"</p>
+                    <p class="footer-description">
+                        Empowering communication through innovative ASL technology. 
+                        Breaking barriers, building bridges.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="translate.html">Translate</a></li>
+                        <li><a href="learn.html">Learn ASL</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Features</h3>
+                    <ul class="footer-links">
+                        <li><a href="translate.html">Real-time Translation</a></li>
+                        <li><a href="learn.html">Interactive Learning</a></li>
+                        <li><a href="learn.html">ASL Alphabet Quiz</a></li>
+                        <li><a href="#">Mobile App (Coming Soon)</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> hello@signspeak.com</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SignSpeak. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p class="accessibility-statement">
+                        <i class="fas fa-universal-access"></i>
+                        Committed to digital accessibility for all users
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/translate.js"></script>
+</body>
+</html>

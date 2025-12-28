@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - SignSpeak</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak">
+                <span>SignSpeak</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/translate" class="nav-link">Translate</a>
+                <a href="/learn" class="nav-link">Learn</a>
+                <a href="/about" class="nav-link active">About</a>
+                <a href="/contact" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main About Container -->
+    <main class="about-container">
+        <!-- Animated Background -->
+        <div class="animated-background">
+            <div class="floating-circle circle-1"></div>
+            <div class="floating-circle circle-2"></div>
+            <div class="floating-circle circle-3"></div>
+            <div class="floating-circle circle-4"></div>
+            <div class="floating-hand hand-1">🤟</div>
+            <div class="floating-hand hand-2">👐</div>
+            <div class="floating-hand hand-3">🤲</div>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Breaking Communication Barriers</h1>
+                    <p class="hero-subtitle">We're on a mission to make American Sign Language accessible to everyone through cutting-edge technology</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number" data-count="98">98</div>
+                            <div class="stat-label">Accuracy Rate</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="15000">15K+</div>
+                            <div class="stat-label">Active Learners</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number" data-count="6">6</div>
+                            <div class="stat-label">ASL Signs</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="glass-visual-card">
+                        <div class="visual-content">
+                            <i class="fas fa-hands-helping visual-icon"></i>
+                            <h3>Inclusive Communication</h3>
+                            <p>Bridging the gap between Deaf and hearing communities</p>
+                        </div>
+                        <div class="visual-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Mission & Vision</h2>
+                    <p>Transforming how the world communicates through sign language</p>
+                </div>
+                <div class="mission-grid">
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Our Mission</h3>
+                        <p>To create innovative technology that makes ASL learning and translation accessible, accurate, and free for everyone, breaking down communication barriers between Deaf and hearing communities.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Our Vision</h3>
+                        <p>A world where communication knows no boundaries, where technology empowers every individual to connect, learn, and understand sign language effortlessly.</p>
+                    </div>
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Our Values</h3>
+                        <p>Accessibility, innovation, inclusivity, and community-driven development guide everything we do at SignSpeak.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="container">
+                <div class="story-content">
+                    <div class="story-text">
+                        <h2>Our Story</h2>
+                        <p>SignSpeak was born from a simple observation: while technology has advanced tremendously, communication barriers between Deaf and hearing individuals remained significant.</p>
+                        <p>Our founder, inspired by a close friend in the Deaf community, recognized the need for a solution that could bridge this gap using modern AI and machine learning.</p>
+                        <p>What started as a university project has evolved into a comprehensive platform that helps thousands of people learn and translate ASL in real-time, fostering understanding and inclusion.</p>
+                        <div class="story-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Born from Academic Research</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-code"></i>
+                                <span>Built with Modern Technology</span>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-users"></i>
+                                <span>Community-Driven Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="story-visual">
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2022</h4>
+                                    <p>Project conception and initial research</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2023</h4>
+                                    <p>First prototype and model training</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <h4>2024</h4>
+                                    <p>Platform launch and user growth</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Section -->
+        <section class="technology-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Technology</h2>
+                    <p>Powered by cutting-edge AI and computer vision</p>
+                </div>
+                <div class="tech-stack">
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Custom neural networks trained on thousands of ASL signs with 98% accuracy</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-hand-paper"></i>
+                        </div>
+                        <h3>MediaPipe</h3>
+                        <p>Real-time hand tracking and landmark detection for precise gesture recognition</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Computer Vision</h3>
+                        <p>Advanced image processing for robust sign language interpretation</p>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>Real-time Processing</h3>
+                        <p>Low-latency translation that works seamlessly with your webcam</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Meet Our Team</h2>
+                    <p>The passionate individuals behind SignSpeak</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" alt="Alex Johnson - Founder & Lead Developer">
+                            <div class="member-social">
+                                <a href="#" aria-label="Visit Alex Johnson's LinkedIn profile">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                                <a href="#" aria-label="Visit Alex Johnson's GitHub profile">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span class="sr-only">GitHub</span>
+                                </a>
+                                <a href="#" aria-label="Visit Alex Johnson's Twitter profile">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Alex Johnson</h3>
+                            <p class="member-role">Founder & Lead Developer</p>
+                            <p class="member-bio">Passionate about AI and accessibility, Alex leads our technical development and vision.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Sarah Chen - AI Research Scientist">
+                            <div class="member-social">
+                                <a href="#" aria-label="Visit Sarah Chen's LinkedIn profile">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                                <a href="#" aria-label="Visit Sarah Chen's GitHub profile">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span class="sr-only">GitHub</span>
+                                </a>
+                                <a href="#" aria-label="Visit Sarah Chen's Twitter profile">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Sarah Chen</h3>
+                            <p class="member-role">AI Research Scientist</p>
+                            <p class="member-bio">Sarah specializes in machine learning models and computer vision algorithms.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" alt="Marcus Rodriguez - UX Designer">
+                            <div class="member-social">
+                                <a href="#" aria-label="Visit Marcus Rodriguez's LinkedIn profile">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                                <a href="#" aria-label="Visit Marcus Rodriguez's GitHub profile">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span class="sr-only">GitHub</span>
+                                </a>
+                                <a href="#" aria-label="Visit Marcus Rodriguez's Twitter profile">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Marcus Rodriguez</h3>
+                            <p class="member-role">UX Designer</p>
+                            <p class="member-bio">Marcus ensures our platform is intuitive, accessible, and beautiful for all users.</p>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop" alt="Dr. Emily Watson - ASL Consultant">
+                            <div class="member-social">
+                                <a href="#" aria-label="Visit Dr. Emily Watson's LinkedIn profile">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
+                                <a href="#" aria-label="Visit Dr. Emily Watson's GitHub profile">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                    <span class="sr-only">GitHub</span>
+                                </a>
+                                <a href="#" aria-label="Visit Dr. Emily Watson's Twitter profile">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                    <span class="sr-only">Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Dr. Emily Watson</h3>
+                            <p class="member-role">ASL Consultant</p>
+                            <p class="member-bio">Emily brings expertise in Deaf culture and ASL linguistics to our team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Impact</h2>
+                    <p>Making a difference in the community</p>
+                </div>
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <div class="impact-icon">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+                        <div class="impact-number" data-count="15000">15,000+</div>
+                        <div class="impact-label">People Learning ASL</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-icon">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                        </div>
+                        <div class="impact-number" data-count="500000">500K+</div>
+                        <div class="impact-label">Signs Translated</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-icon">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
+                        </div>
+                        <div class="impact-number" data-count="120">120+</div>
+                        <div class="impact-label">Countries Reached</div>
+                    </div>
+                    <div class="impact-stat">
+                        <div class="impact-icon">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
+                        </div>
+                        <div class="impact-number" data-count="98">98%</div>
+                        <div class="impact-label">User Satisfaction</div>
+                    </div>
+                </div>
+                <div class="impact-testimonials">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"SignSpeak helped me communicate with my deaf students in ways I never thought possible. It's revolutionary for education."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Maria Gonzalez</h4>
+                                <p>Special Education Teacher</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <p>"As a deaf individual, seeing technology that truly understands and respects my language means everything. Thank you SignSpeak!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user" aria-hidden="true"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>James Wilson</h4>
+                                <p>SignSpeak User</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Join Our Mission</h2>
+                    <p>Be part of the movement to make communication accessible for everyone</p>
+                    <div class="cta-buttons">
+                        <a href="/learn" class="cta-btn primary">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                            Start Learning ASL
+                        </a>
+                        <a href="/contact" class="cta-btn secondary">
+                            <i class="fas fa-handshake" aria-hidden="true"></i>
+                            Partner With Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak">
+                        <span>SignSpeak</span>
+                    </div>
+                    <p class="footer-tagline">"Communicate Beyond Words"</p>
+                    <p class="footer-description">
+                        Making American Sign Language accessible to everyone through innovative technology and education.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('translate') }}">Real-time Translator</a></li>
+                        <li><a href="{{ url_for('learn') }}">Learn ASL</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ASL Alphabet Guide</a></li>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Visit our YouTube channel" title="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram" title="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter" title="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect with us on LinkedIn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="View our GitHub repository" title="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" aria-label="Subscribe to newsletter" title="Subscribe">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span class="sr-only">Subscribe to Newsletter</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SignSpeak. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p class="accessibility-statement">
+                        <i class="fas fa-universal-access" aria-hidden="true"></i>
+                        Committed to accessibility and inclusive design
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cursor -->
+    <div class="floating-cursor" id="floatingCursor"></div>
+
+    <!-- Screen Reader Only Text -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+</body>
+</html>

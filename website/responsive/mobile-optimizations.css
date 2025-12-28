@@ -1,0 +1,651 @@
+/* ============================================================================
+   MOBILE OPTIMIZATIONS
+   Specific improvements for mobile devices (320px - 767px)
+   ============================================================================ */
+
+/* ============================================================================
+   1. MOBILE VIEWPORT FIXES
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Prevent zoom on input focus (iOS) */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+
+    /* Safe area insets for notched devices */
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+
+    /* Prevent text size adjustment */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* ============================================================================
+   2. MOBILE NAVIGATION
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Sticky mobile nav */
+    .navbar {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(78, 52, 46, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Mobile logo */
+    .nav-logo {
+        flex: 1;
+    }
+
+    .logo-text {
+        font-size: 1.1rem;
+    }
+
+    /* Hamburger menu */
+    .mobile-menu-btn {
+        order: 3;
+        margin-left: auto;
+    }
+
+    /* Full-screen mobile menu */
+    .nav-menu {
+        background: linear-gradient(135deg, rgba(78, 52, 46, 0.98), rgba(46, 39, 35, 0.98));
+    }
+
+    /* Mobile menu items */
+    .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        font-size: 1.1rem;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link i {
+        font-size: 1.3rem;
+    }
+
+    /* Active link highlight */
+    .nav-link.active {
+        background: linear-gradient(135deg, #C49A6C, #A1887F);
+        color: white;
+        box-shadow: 0 4px 15px rgba(196, 154, 108, 0.4);
+    }
+}
+
+/* ============================================================================
+   3. MOBILE HERO SECTION
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .hero {
+        padding: 1.5rem 1rem;
+        min-height: 85vh;
+    }
+
+    .hero-content {
+        padding: 1.5rem;
+    }
+
+    .glass-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+
+    .hero-quote {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .btn-rounded {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        justify-content: center;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+        bottom: 1rem;
+    }
+}
+
+/* ============================================================================
+   4. MOBILE SECTIONS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Section spacing */
+    section {
+        padding: 2.5rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-header p {
+        font-size: 0.95rem;
+    }
+
+    /* Purpose section */
+    .purpose-content {
+        padding: 1.5rem;
+    }
+
+    .purpose-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+    }
+
+    .purpose-icons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .icon-item {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* ============================================================================
+   5. MOBILE CARDS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Feature cards */
+    .feature-card {
+        padding: 1.5rem;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .feature-card p {
+        font-size: 0.9rem;
+    }
+
+    /* Testimonial cards */
+    .testimonial-card {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .testimonial-header img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Mission cards */
+    .mission-card {
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================================================
+   6. MOBILE FORMS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .contact-form {
+        padding: 0;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .input-field label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .input-field input,
+    .input-field textarea,
+    .input-field select {
+        padding: 0.9rem;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    /* Newsletter form */
+    .newsletter-form {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .newsletter-form input {
+        width: 100%;
+    }
+
+    .newsletter-form button {
+        width: 100%;
+        padding: 0.9rem;
+    }
+}
+
+/* ============================================================================
+   7. MOBILE FOOTER
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-section {
+        padding: 0 1rem;
+    }
+
+    .footer-logo {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .footer-logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .footer-links li {
+        margin: 0.5rem 0;
+    }
+
+    .social-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        padding: 1.5rem 1rem 1rem;
+        text-align: center;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================================
+   8. MOBILE METRICS/STATS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .metrics {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .metric-item {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .metric-number {
+        font-size: 2.5rem;
+    }
+
+    .metric-label {
+        font-size: 0.95rem;
+    }
+
+    /* Impact stats */
+    .impact-stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .impact-stat {
+        padding: 1.5rem;
+    }
+
+    .impact-number {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================================================
+   9. MOBILE MODALS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .modal-content {
+        width: 95%;
+        max-width: 95%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+        border-radius: 15px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .modal-close {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    /* Practice modal */
+    .practice-letter {
+        font-size: 4rem;
+        margin: 1.5rem 0;
+    }
+
+    .practice-instruction {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .practice-actions {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .practice-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+/* ============================================================================
+   10. MOBILE BUTTONS & INTERACTIONS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Larger touch targets */
+    .btn,
+    .control-btn,
+    .quick-btn,
+    .cta-btn {
+        min-height: 48px;
+        min-width: 48px;
+        padding: 0.9rem 1.5rem;
+    }
+
+    /* Button groups */
+    .btn-group,
+    .hero-buttons,
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .btn-group .btn,
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ============================================================================
+   11. MOBILE TIMELINE
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .timeline {
+        padding: 0 1rem;
+    }
+
+    .timeline-line {
+        left: 20px;
+    }
+
+    .timeline-item {
+        padding-left: 50px;
+        margin-bottom: 2rem;
+    }
+
+    .timeline-marker {
+        left: 10px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .timeline-content h4 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Roadmap */
+    .roadmap {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .roadmap-item {
+        width: 100%;
+        padding: 1.5rem;
+    }
+}
+
+/* ============================================================================
+   12. MOBILE FAQ
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .faq-container {
+        padding: 0 1rem;
+    }
+
+    .faq-item {
+        margin-bottom: 1rem;
+    }
+
+    .faq-question {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .faq-answer {
+        padding: 1rem;
+    }
+
+    .faq-answer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================================================
+   13. MOBILE TEAM SECTION
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .team-member {
+        padding: 1.5rem;
+    }
+
+    .member-photo {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1rem;
+    }
+
+    .member-info {
+        text-align: center;
+    }
+
+    .member-social {
+        justify-content: center;
+    }
+}
+
+/* ============================================================================
+   14. MOBILE LOADING & ANIMATIONS
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    .loading-spinner {
+        padding: 2rem;
+    }
+
+    .spinner-circle {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Floating elements - reduce on mobile */
+    .floating-hands,
+    .floating-circle,
+    .bg-elements {
+        opacity: 0.3;
+    }
+
+    .floating-hand {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============================================================================
+   15. MOBILE UTILITIES
+   ============================================================================ */
+
+@media (max-width: 767px) {
+    /* Hide on mobile */
+    .hide-mobile {
+        display: none !important;
+    }
+
+    /* Show only on mobile */
+    .show-mobile {
+        display: block !important;
+    }
+
+    /* Mobile text alignment */
+    .mobile-center {
+        text-align: center !important;
+    }
+
+    /* Mobile full width */
+    .mobile-full-width {
+        width: 100% !important;
+    }
+
+    /* Mobile padding */
+    .mobile-padding {
+        padding: 1rem !important;
+    }
+
+    /* Mobile margin */
+    .mobile-margin {
+        margin: 1rem 0 !important;
+    }
+}

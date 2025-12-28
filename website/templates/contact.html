@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - SignSpeak</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak Logo" width="40" height="40">
+                <span>SignSpeak</span>
+            </div>
+            <div class="nav-menu">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/translate" class="nav-link">Translate</a>
+                <a href="/learn" class="nav-link">Learn</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/contact" class="nav-link active">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Animated Background -->
+    <div class="animated-background">
+        <!-- Animated Waves -->
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+        
+        <!-- Floating Particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        
+        <!-- Animated Blobs with Hand Signs -->
+        <div class="blob blob-1">
+            <span class="hand-sign">👋</span>
+        </div>
+        <div class="blob blob-2">
+            <span class="hand-sign">🤟</span>
+        </div>
+        <div class="blob blob-3">
+            <span class="hand-sign">✋</span>
+        </div>
+        <div class="blob blob-4">
+            <span class="hand-sign">🤘</span>
+        </div>
+        <div class="blob blob-5">
+            <span class="hand-sign">👌</span>
+        </div>
+        <div class="blob blob-6">
+            <span class="hand-sign">✌️</span>
+        </div>
+    </div>
+
+    <!-- Contact Container -->
+    <main class="contact-container">
+        <!-- Header Section -->
+        <section class="contact-header">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+        </section>
+
+        <!-- Main Content -->
+        <div class="contact-content">
+            <!-- Left Side: Contact Form -->
+            <div class="form-section">
+                <div class="form-card">
+                    <h2><i class="fas fa-paper-plane"></i> Send Us a Message</h2>
+                    
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="How can we help?">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Tell us more..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span>Send Message</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Info & Video -->
+            <div class="info-section">
+                <!-- 3D Interactive Video Container -->
+                <div class="video-container-3d" data-tilt>
+                    <video 
+                        id="contactVideo"
+                        class="contact-video" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline>
+                        <source src="{{ url_for('static', filename='../assets/videos/other/contact.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay"></div>
+                </div>
+
+                <!-- Contact Information Cards -->
+                <div class="info-cards">
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <p>hello@signspeak.com</p>
+                        <p>support@signspeak.com</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                        <p>Mon-Fri 9AM-6PM PST</p>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>123 Innovation Drive</p>
+                        <p>Tech Park, CA 94301</p>
+                    </div>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://twitter.com/signspeak" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://facebook.com/signspeak" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com/signspeak" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/signspeak" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://youtube.com/signspeak" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak">
+                        <span>SignSpeak</span>
+                    </div>
+                    <p class="footer-tagline">"Communicate Beyond Words"</p>
+                    <p class="footer-description">
+                        Making American Sign Language accessible to everyone through innovative technology and education.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('translate') }}">Real-time Translator</a></li>
+                        <li><a href="{{ url_for('learn') }}">Learn ASL</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ASL Alphabet Guide</a></li>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Visit our YouTube channel" title="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram" title="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter" title="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect with us on LinkedIn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="View our GitHub repository" title="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" aria-label="Subscribe to newsletter" title="Subscribe">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span class="sr-only">Subscribe to Newsletter</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SignSpeak. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p class="accessibility-statement">
+                        <i class="fas fa-universal-access" aria-hidden="true"></i>
+                        Committed to accessibility and inclusive design
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="modal-close-btn" id="modalClose">Close</button>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("wwIyEjSN2vDFs2rYD"); // Your Public Key
+        })();
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+</body>
+</html>

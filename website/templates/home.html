@@ -1,0 +1,276 @@
+{% extends "base.html" %}
+
+{% block title %}SignSpeak - Communicate Beyond Words{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="glass-card">
+                <h1 class="hero-title">SignSpeak</h1>
+                <p class="hero-quote">"Communicate Beyond Words"</p>
+                <p class="hero-subtitle">Free, fast, and interactive ASL learning for everyone</p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('learn') }}" class="btn btn-primary btn-rounded">Start Learning</a>
+                    <a href="{{ url_for('translate') }}" class="btn btn-outline btn-rounded">Try Live Translator</a>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Purpose Section -->
+    <section class="purpose">
+        <div class="container">
+            <h2 class="section-title">Why We Built This</h2>
+            <div class="purpose-content">
+                <p class="purpose-text">
+                    We believe communication is a fundamental human right. Our platform bridges the gap between 
+                    the Deaf and hearing communities through technology that understands, translates, and teaches 
+                    American Sign Language. By making ASL accessible to everyone, we're building a more inclusive 
+                    world where everyone can communicate beyond words.
+                </p>
+                <div class="purpose-icons">
+                    <div class="icon-item">
+                        <i class="fas fa-universal-access" aria-hidden="true"></i>
+                        <span>Accessibility</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-hands" aria-hidden="true"></i>
+                        <span>Inclusion</span>
+                    </div>
+                    <div class="icon-item">
+                        <i class="fas fa-heart" aria-hidden="true"></i>
+                        <span>Community</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Features & Benefits</h2>
+            <div class="timeline">
+                <div class="timeline-line"></div>
+                <div class="features-grid">
+                    <div class="feature-card left" data-aos="fade-right">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                        </div>
+                        <h3>Step-by-step ASL Lessons</h3>
+                        <p>Comprehensive learning path from basic alphabet to complex sentences</p>
+                    </div>
+                    
+                    <div class="feature-card right" data-aos="fade-left">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-paper" aria-hidden="true"></i>
+                        </div>
+                        <h3>Real-time Gesture Recognition</h3>
+                        <p>Advanced AI that understands your signs instantly with high accuracy</p>
+                    </div>
+                    
+                    <div class="feature-card left" data-aos="fade-right">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera" aria-hidden="true"></i>
+                        </div>
+                        <h3>Camera-based Translation</h3>
+                        <p>Use your webcam to translate signs to text in real-time</p>
+                    </div>
+                    
+                    <div class="feature-card right" data-aos="fade-left">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
+                        </div>
+                        <h3>Warm & Friendly Design</h3>
+                        <p>Intuitive interface designed with care to make learning enjoyable and stress-free</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-background"></div>
+        <!-- Animated Background Elements -->
+        <div class="bg-elements">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+            <div class="floating-shape shape-4"></div>
+            <div class="floating-shape shape-5"></div>
+        </div>
+        <div class="container">
+            <h2 class="section-title">What Our Learners Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="zoom-in">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Sarah M. - SignSpeak User">
+                        <div class="testimonial-info">
+                            <h4>Sarah M.</h4>
+                            <div class="stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"This platform helped me communicate with my deaf cousin. The real-time translator is amazing!"</p>
+                </div>
+                
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="James R. - Teacher">
+                        <div class="testimonial-info">
+                            <h4>James R.</h4>
+                            <div class="stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"As a teacher, I use this to make my classroom more inclusive. The students love it!"</p>
+                </div>
+                
+                <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Maria L. - ASL Learner">
+                        <div class="testimonial-info">
+                            <h4>Maria L.</h4>
+                            <div class="stars">
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                                <i class="fas fa-star" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Learning ASL has never been easier. The step-by-step lessons are perfect for beginners."</p>
+                </div>
+            </div>
+            
+            <div class="metrics">
+                <div class="metric-item">
+                    <div class="metric-number" data-count="15000">15k+</div>
+                    <div class="metric-label">Active Learners</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number" data-count="250">250+</div>
+                    <div class="metric-label">Gestures Mastered</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-number" data-count="98">98%</div>
+                    <div class="metric-label">Learning Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Goals Section -->
+    <section class="future-goals">
+        <div class="container">
+            <h2 class="section-title">Our Future Development Roadmap</h2>
+            <div class="roadmap">
+                <div class="roadmap-item completed" data-aos="fade-up">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-check" aria-hidden="true"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Full Phrase Translation</h3>
+                        <p>Complete sentence and conversation translation</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Mobile App</h3>
+                        <p>Learn and translate on the go with our mobile application</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-comments" aria-hidden="true"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Community Chat</h3>
+                        <p>Practice with other learners in real-time chat</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="roadmap-icon">
+                        <i class="fas fa-volume-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="roadmap-content">
+                        <h3>Sign-to-Speech</h3>
+                        <p>Convert signs directly to spoken words</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Is SignSpeak really free to use?</span>
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Our core features including basic lessons and real-time translation are completely free. We believe in making ASL learning accessible to everyone.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>What equipment do I need?</span>
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All you need is a computer with a webcam and internet connection. Our system works with most modern browsers.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>How accurate is the real-time translation?</span>
+                        <i class="fas fa-plus" aria-hidden="true"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our current model achieves 98% accuracy for the 6 basic signs, with continuous improvements being made. You can learn A to Z alphabets sign on learn page.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Particle Canvas (for future goals section) -->
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+{% endblock %}

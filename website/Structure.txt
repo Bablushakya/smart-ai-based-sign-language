@@ -1,0 +1,39 @@
+website/
+├── app.py                          # Flask backend
+├── requirements.txt                # Website dependencies
+├── static/
+│   ├── css/
+│   │   ├── base.css               # Shared styles (brown glassmorphism)
+│   │   ├── home.css               # Home page specific styles
+│   │   ├── translate.css          # Translation page specific styles
+│   │   ├── learn.css              # Learning page specific styles
+│   │   ├── about.css              # About page specific styles
+│   │   ├── contact.css            # Contact page specific styles
+│   │   └── animations.css         # Shared animations
+│   │
+│   ├── js/
+│   │   ├── utils.js               # Shared utilities
+│   │   ├── camera.js              # Camera handling
+│   │   ├── home.js                # Home page functionality
+│   │   ├── translate.js           # Translation functionality
+│   │   ├── learn.js               # Learning functionality
+│   │   ├── about.js               # About page functionality
+│   │   └── contact.js             # Contact form handling
+│   │
+│   └── assets/
+│       ├── images/
+│       │   ├── logo.png
+│       │   └── background.jpg
+│       └── videos/
+│           └── alphabet/
+│               ├── A.mp4
+│               ├── B.mp4
+│               └── ...
+│
+└── templates/
+    ├── base.html                  # Base template
+    ├── home.html                  # Home page
+    ├── translate.html             # Translation page
+    ├── learn.html                 # Learning page
+    ├── about.html                 # About page
+    └── contact.html               # Contact page

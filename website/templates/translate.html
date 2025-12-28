@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time ASL Translator - SignSpeak</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/translate.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="{{ url_for('home') }}" class="logo-link">
+                    <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak" class="logo-img" onerror="this.style.display='none'">
+                    <span class="logo-text">SignSpeak</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+                <a href="{{ url_for('translate') }}" class="nav-link active">Translate</a>
+                <a href="{{ url_for('learn') }}" class="nav-link">Learn</a>
+                <a href="{{ url_for('about') }}" class="nav-link">About</a>
+                <a href="{{ url_for('contact') }}" class="nav-link">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Translation Interface -->
+    <main class="translate-container">
+        <!-- Header Section -->
+        <section class="translate-header">
+            <div class="header-content">
+                <div class="header-icon-container">
+                    <i class="fas fa-sign-language header-icon"></i>
+                </div>
+                <h1 class="translate-title">Real-time ASL Translator</h1>
+                <p class="translate-subtitle">Communicate instantly using your webcam. Show ASL signs and get real-time text translation.</p>
+                <div class="performance-indicators">
+                    <div class="performance-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>High Accuracy</span>
+                    </div>
+                    <div class="performance-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Real-time Processing</span>
+                    </div>
+                    <div class="performance-item">
+                        <i class="fas fa-hands"></i>
+                        <span>6 Gestures Supported</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Translation Area -->
+        <section class="translation-area">
+            <!-- Video Feed Section -->
+            <div class="video-section">
+                <div class="video-container glass-card">
+                    <div class="video-header">
+                        <h3><i class="fas fa-video"></i> Live Camera Feed</h3>
+                        <div class="video-stats">
+                            <span id="fpsCounter">0 FPS</span>
+                            <span id="processingTime">0ms</span>
+                        </div>
+                    </div>
+                    
+                    <div class="video-wrapper">
+                        <!-- FIXED: Cross-browser video attributes - removed problematic attributes -->
+                        <video id="webcamVideo" autoplay muted></video>
+                        <canvas id="outputCanvas" class="output-canvas"></canvas>
+                        <canvas id="keypointCanvas" class="keypoint-canvas"></canvas>
+                        
+                        <div class="video-overlay">
+                            <div class="status-indicator" id="statusIndicator">
+                                <div class="status-dot"></div>
+                                <span>Ready to Start</span>
+                            </div>
+                            <div class="sign-overlay" id="signOverlay">
+                                <span class="sign-name" id="currentSignName">No Sign Detected</span>
+                                <span class="sign-confidence" id="currentSignConfidence">0%</span>
+                            </div>
+                            <div class="confidence-display">
+                                <span class="confidence-label">Detection Confidence:</span>
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidenceFill" data-confidence="0"></div>
+                                    <span class="confidence-value" id="confidenceValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="video-controls">
+                        <button class="control-btn btn-primary" id="startBtn">
+                            <i class="fas fa-play"></i>
+                            Start Translation
+                        </button>
+                        <button class="control-btn btn-secondary" id="stopBtn" disabled>
+                            <i class="fas fa-stop"></i>
+                            Stop
+                        </button>
+                        <button class="control-btn btn-outline" id="screenshotBtn">
+                            <i class="fas fa-camera"></i>
+                            Capture
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section">
+                <!-- Current Detection Card -->
+                <div class="result-card glass-card current-detection">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-text-height"></i>
+                            Detected Text
+                        </h3>
+                        <div class="card-actions">
+                            <button class="action-btn" id="copyTextBtn" title="Copy text">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button class="action-btn" id="clearTextBtn" title="Clear text">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="detection-result">
+                        <div class="text-output" id="textOutput">
+                            <span class="placeholder">Show a sign to your webcam...</span>
+                        </div>
+                        
+                        <div class="detection-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Gesture:</span>
+                                <span class="detail-value" id="gestureName">-</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Confidence:</span>
+                                <span class="detail-value confidence-badge" id="confidenceBadge">0%</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Hands Detected:</span>
+                                <span class="detail-value" id="handsCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tts-controls">
+                        <h4><i class="fas fa-volume-up"></i> Text-to-Speech</h4>
+                        <div class="tts-action-group">
+                            <button class="tts-btn btn-primary" id="ttsBtn" disabled>
+                                <i class="fas fa-play-circle"></i>
+                                Speak Text
+                            </button>
+                            <button class="tts-btn btn-outline" id="stopTtsBtn" disabled>
+                                <i class="fas fa-stop"></i>
+                                Stop
+                            </button>
+                        </div>
+                        <div class="tts-status" id="ttsStatus">
+                            Ready
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Supported Gestures Section -->
+        <section class="gestures-section">
+            <div class="gestures-container glass-card">
+                <h3 class="gestures-title">
+                    <i class="fas fa-hands"></i>
+                    Supported Gestures
+                </h3>
+                <p class="gestures-subtitle">Learn the ASL signs our system can recognize</p>
+                <div class="gesture-grid">
+                    <div class="gesture-item" data-gesture="hello">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/hello.png') }}" alt="Hello sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">Hello</span>
+                    </div>
+                    <div class="gesture-item" data-gesture="bye">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/bye.png') }}" alt="Bye sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">Bye</span>
+                    </div>
+                    <div class="gesture-item" data-gesture="yes">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/yes.png') }}" alt="Yes sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">Yes</span>
+                    </div>
+                    <div class="gesture-item" data-gesture="no">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/no.png') }}" alt="No sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">No</span>
+                    </div>
+                    <div class="gesture-item" data-gesture="thankyou">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/thankyou.png') }}" alt="Thank You sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">Thank You</span>
+                    </div>
+                    <div class="gesture-item" data-gesture="perfect">
+                        <div class="gesture-image-wrapper">
+                            <img src="{{ url_for('static', filename='../assets/images/perfect.png') }}" alt="Perfect sign" class="gesture-image">
+                        </div>
+                        <span class="gesture-name">Perfect</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions Section -->
+        <section class="instructions-section">
+            <div class="instructions-card glass-card">
+                <h3><i class="fas fa-lightbulb"></i> How to Use</h3>
+                <div class="instructions-grid">
+                    <div class="instruction-item">
+                        <div class="instruction-icon">1</div>
+                        <div class="instruction-content">
+                            <h4>Start Translation</h4>
+                            <p>Click "Start Translation" to begin processing your webcam feed</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-icon">2</div>
+                        <div class="instruction-content">
+                            <h4>Show Signs Clearly</h4>
+                            <p>Position your hand clearly in frame with good lighting</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-icon">3</div>
+                        <div class="instruction-content">
+                            <h4>View Real-time Results</h4>
+                            <p>Watch as gestures are detected and translated instantly</p>
+                        </div>
+                    </div>
+                    <div class="instruction-item">
+                        <div class="instruction-icon">4</div>
+                        <div class="instruction-content">
+                            <h4>Use Text-to-Speech</h4>
+                            <p>Hear the translations with our built-in voice system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Spinner -->
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner-content glass-card">
+            <div class="spinner"></div>
+            <h4>Loading AI Model</h4>
+            <p>Please wait while we initialize the translation system...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="modelProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Camera Permission Modal -->
+    <div class="permission-modal" id="permissionModal">
+        <div class="modal-content glass-card">
+            <div class="modal-icon">
+                <i class="fas fa-camera"></i>
+            </div>
+            <h3>Camera Access Required</h3>
+            <p>To use the real-time ASL translator, we need access to your camera. Please allow camera permissions when prompted.</p>
+            <div class="modal-actions">
+                <button class="modal-btn btn-primary" id="enableCameraBtn">
+                    <i class="fas fa-check"></i>
+                    Enable Camera
+                </button>
+                <button class="modal-btn btn-outline" id="cancelCameraBtn">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Camera Error Modal -->
+    <div class="permission-modal" id="cameraErrorModal">
+        <div class="modal-content glass-card">
+            <div class="modal-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>Camera Error</h3>
+            <p id="cameraErrorMessage">Unable to access camera. Please check your camera permissions and try again.</p>
+            <div class="modal-actions">
+                <button class="modal-btn btn-primary" id="retryCameraBtn">
+                    <i class="fas fa-redo"></i>
+                    Retry Camera
+                </button>
+                <button class="modal-btn btn-secondary" onclick="window.location.href='/learn'">
+                    <i class="fas fa-graduation-cap"></i>
+                    Go to Learn Page
+                </button>
+                <button class="modal-btn btn-outline" onclick="document.getElementById('cameraErrorModal').style.display='none'">
+                    <i class="fas fa-times"></i>
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="{{ url_for('static', filename='../assets/images/logo.png') }}" alt="SignSpeak">
+                        <span>SignSpeak</span>
+                    </div>
+                    <p class="footer-tagline">"Communicate Beyond Words"</p>
+                    <p class="footer-description">
+                        Making American Sign Language accessible to everyone through innovative technology and education.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('translate') }}">Real-time Translator</a></li>
+                        <li><a href="{{ url_for('learn') }}">Learn ASL</a></li>
+                        <li><a href="{{ url_for('about') }}">About Us</a></li>
+                        <li><a href="{{ url_for('contact') }}">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">ASL Alphabet Guide</a></li>
+                        <li><a href="#">Learning Materials</a></li>
+                        <li><a href="#">Video Tutorials</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                        <li><a href="#">Support Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Visit our YouTube channel" title="YouTube">
+                            <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Instagram" title="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Follow us on Twitter" title="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Connect with us on LinkedIn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="View our GitHub repository" title="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required aria-label="Email address for newsletter">
+                            <button type="submit" aria-label="Subscribe to newsletter" title="Subscribe">
+                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                                <span class="sr-only">Subscribe to Newsletter</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 SignSpeak. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                    <p class="accessibility-statement">
+                        <i class="fas fa-universal-access" aria-hidden="true"></i>
+                        Committed to accessibility and inclusive design
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FIXED: Completely browser-compatible CSS with proper vendor prefix order -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #4E342E 0%, #2E2723 100%);
+            color: #F5E9DD;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        /* Glass card effect - FIXED: No backdrop-filter for better compatibility */
+        .glass-card {
+            background: rgba(255, 248, 240, 0.95);
+            border: 1px solid rgba(196, 154, 108, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            color: #4E342E;
+        }
+
+        /* FIXED: Camera mirroring with CORRECT vendor prefix order */
+        #webcamVideo {
+            -ms-transform: scaleX(-1); /* IE 9 */
+            -webkit-transform: scaleX(-1); /* Safari 3-8 */
+            transform: scaleX(-1); /* Standard syntax */
+        }
+
+        .output-canvas, .keypoint-canvas {
+            -ms-transform: scaleX(-1); /* IE 9 */
+            -webkit-transform: scaleX(-1); /* Safari 3-8 */
+            transform: scaleX(-1); /* Standard syntax */
+        }
+
+        /* Video wrapper for proper layering */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(245, 233, 221, 0.9);
+        }
+
+        #webcamVideo,
+        .output-canvas,
+        .keypoint-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .keypoint-canvas {
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .output-canvas {
+            z-index: 1;
+        }
+
+        #webcamVideo {
+            z-index: 0;
+        }
+
+        /* Video overlay styling */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .status-indicator {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e74c3c;
+        }
+
+        .status-indicator.active .status-dot {
+            background: #27ae60;
+        }
+
+        .sign-overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            -ms-transform: translateX(-50%); /* IE 9 */
+            -webkit-transform: translateX(-50%); /* Safari 3-8 */
+            transform: translateX(-50%); /* Standard syntax */
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sign-name {
+            font-size: 1.1em;
+        }
+
+        .sign-confidence {
+            background: #C49A6C;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            color: white;
+        }
+
+        .confidence-display {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 12px;
+            border-radius: 12px;
+        }
+
+        .confidence-label {
+            color: white;
+            font-size: 0.9em;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .confidence-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #27ae60);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .confidence-value {
+            position: absolute;
+            right: 0;
+            top: -20px;
+            color: white;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner-content {
+            text-align: center;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .spinner {
+            border: 4px solid rgba(161, 136, 127, 0.3);
+            border-top: 4px solid #C49A6C;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        /* FIXED: Animation with proper vendor prefix order */
+        @keyframes spin {
+            0% { 
+                -ms-transform: rotate(0deg); /* IE 9 */
+                -webkit-transform: rotate(0deg); /* Safari 3-8 */
+                transform: rotate(0deg); /* Standard syntax */
+            }
+            100% { 
+                -ms-transform: rotate(360deg); /* IE 9 */
+                -webkit-transform: rotate(360deg); /* Safari 3-8 */
+                transform: rotate(360deg); /* Standard syntax */
+            }
+        }
+
+        /* Modal styles */
+        .permission-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 248, 240, 0.98);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            color: #4E342E;
+        }
+
+        .modal-content h3 {
+            color: #4E342E;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: #5D4037;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            color: #C49A6C;
+            margin-bottom: 1rem;
+        }
+
+        /* Button styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #C49A6C, #A1887F);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(196, 154, 108, 0.3);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: linear-gradient(135deg, #A1887F, #8D6E63);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(196, 154, 108, 0.4);
+        }
+
+        .btn-primary:disabled {
+            background: #D7CCC8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-outline {
+            background: rgba(196, 154, 108, 0.1);
+            color: #C49A6C;
+            border: 2px solid #C49A6C;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover:not(:disabled) {
+            background: #C49A6C;
+            color: white;
+        }
+
+        /* Notification system */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1001;
+            -ms-transform: translateX(400px); /* IE 9 */
+            -webkit-transform: translateX(400px); /* Safari 3-8 */
+            transform: translateX(400px); /* Standard syntax */
+            transition: transform 0.3s ease;
+            max-width: 400px;
+        }
+
+        .notification.show {
+            -ms-transform: translateX(0); /* IE 9 */
+            -webkit-transform: translateX(0); /* Safari 3-8 */
+            transform: translateX(0); /* Standard syntax */
+        }
+
+        .notification-success {
+            background: #27ae60;
+        }
+
+        .notification-error {
+            background: #e74c3c;
+        }
+
+        .notification-warning {
+            background: #f39c12;
+        }
+
+        /* Mobile-specific fixes using media queries (cross-browser compatible) */
+        @media (max-width: 768px) {
+            .video-wrapper {
+                height: 300px;
+            }
+            
+            .sign-overlay {
+                top: 10px;
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+            
+            .confidence-display {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                padding: 8px;
+            }
+        }
+
+        /* FIXED: iOS-specific fixes using feature detection in JavaScript instead of CSS hacks */
+        /* This will be handled in the JavaScript for playsinline behavior */
+
+    </style>
+
+    <!-- JavaScript to handle browser-specific fixes -->
+    <script>
+        // Set playsinline attribute only for iOS devices
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoElement = document.getElementById('webcamVideo');
+            
+            // Detect iOS devices
+            const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            
+            if (isIOS && videoElement) {
+                videoElement.setAttribute('playsinline', 'true');
+                videoElement.setAttribute('webkit-playsinline', 'true');
+            }
+            
+            // Add backdrop-filter support detection and fallback
+            const supportsBackdropFilter = CSS.supports('backdrop-filter', 'blur(10px)') || 
+                                         CSS.supports('-webkit-backdrop-filter', 'blur(10px)');
+            
+            if (!supportsBackdropFilter) {
+                // Add fallback class for browsers that don't support backdrop-filter
+                document.querySelectorAll('.status-indicator, .sign-overlay, .confidence-display').forEach(el => {
+                    el.classList.add('no-backdrop-filter');
+                });
+            }
+        });
+    </script>
+
+    <!-- Additional CSS for backdrop-filter fallback -->
+    <style>
+        /* Fallback styles for browsers without backdrop-filter support */
+        .no-backdrop-filter.status-indicator,
+        .no-backdrop-filter.sign-overlay,
+        .no-backdrop-filter.confidence-display {
+            background: rgba(0, 0, 0, 0.9) !important; /* More opaque background */
+        }
+    </style>
+
+    <!-- Fixed translate.js with working camera system -->
+    <script src="{{ url_for('static', filename='js/translate_fixed.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,939 @@
+/* Contact Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Animated Background */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: linear-gradient(135deg, #4E342E 0%, #2E2723 100%);
+}
+
+/* Animated Waves - ENHANCED VISIBILITY */
+.wave {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    opacity: 0.3;
+    border-radius: 45%;
+    filter: blur(60px);
+}
+
+.wave-1 {
+    background: radial-gradient(circle, rgba(196, 154, 108, 0.8), rgba(196, 154, 108, 0.4) 40%, transparent 70%);
+    top: -30%;
+    left: -30%;
+    animation: wave-rotate 20s linear infinite;
+}
+
+.wave-2 {
+    background: radial-gradient(circle, rgba(161, 136, 127, 0.7), rgba(161, 136, 127, 0.3) 40%, transparent 70%);
+    top: -30%;
+    right: -30%;
+    animation: wave-rotate 25s linear infinite reverse;
+}
+
+.wave-3 {
+    background: radial-gradient(circle, rgba(245, 233, 221, 0.6), rgba(245, 233, 221, 0.2) 40%, transparent 70%);
+    bottom: -30%;
+    left: -15%;
+    animation: wave-rotate 30s linear infinite;
+}
+
+@keyframes wave-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Floating Particles */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(196, 154, 108, 0.9);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 20px rgba(196, 154, 108, 1),
+        0 0 40px rgba(196, 154, 108, 0.6);
+    animation: particle-float 15s infinite ease-in-out;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+    animation-duration: 12s;
+}
+
+.particle:nth-child(2) {
+    left: 20%;
+    top: 80%;
+    animation-delay: 2s;
+    animation-duration: 15s;
+}
+
+.particle:nth-child(3) {
+    left: 30%;
+    top: 40%;
+    animation-delay: 4s;
+    animation-duration: 18s;
+}
+
+.particle:nth-child(4) {
+    left: 50%;
+    top: 60%;
+    animation-delay: 1s;
+    animation-duration: 14s;
+}
+
+.particle:nth-child(5) {
+    left: 70%;
+    top: 30%;
+    animation-delay: 3s;
+    animation-duration: 16s;
+}
+
+.particle:nth-child(6) {
+    left: 80%;
+    top: 70%;
+    animation-delay: 5s;
+    animation-duration: 13s;
+}
+
+.particle:nth-child(7) {
+    left: 15%;
+    top: 50%;
+    animation-delay: 2.5s;
+    animation-duration: 17s;
+}
+
+.particle:nth-child(8) {
+    left: 60%;
+    top: 15%;
+    animation-delay: 4.5s;
+    animation-duration: 19s;
+}
+
+.particle:nth-child(9) {
+    left: 85%;
+    top: 45%;
+    animation-delay: 1.5s;
+    animation-duration: 14.5s;
+}
+
+.particle:nth-child(10) {
+    left: 40%;
+    top: 85%;
+    animation-delay: 3.5s;
+    animation-duration: 16.5s;
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    25% {
+        transform: translate(30px, -50px) scale(1.2);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-20px, -100px) scale(0.8);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(40px, -150px) scale(1.1);
+        opacity: 0.4;
+    }
+    90% {
+        opacity: 0.2;
+    }
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 154, 108, 0.15), rgba(161, 136, 127, 0.1));
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 20s infinite ease-in-out;
+}
+
+.blob .hand-sign {
+    font-size: 4rem;
+    opacity: 0.3;
+    animation: rotate 15s infinite linear;
+}
+
+.blob-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+}
+
+.blob-2 {
+    width: 250px;
+    height: 250px;
+    top: 60%;
+    left: 80%;
+    animation-delay: 2s;
+    animation-duration: 30s;
+}
+
+.blob-3 {
+    width: 350px;
+    height: 350px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 4s;
+    animation-duration: 28s;
+}
+
+.blob-4 {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    left: 15%;
+    animation-delay: 6s;
+    animation-duration: 22s;
+}
+
+.blob-5 {
+    width: 280px;
+    height: 280px;
+    top: 70%;
+    right: 20%;
+    animation-delay: 8s;
+    animation-duration: 26s;
+}
+
+.blob-6 {
+    width: 220px;
+    height: 220px;
+    top: 45%;
+    left: 40%;
+    animation-delay: 10s;
+    animation-duration: 24s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    25% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    75% {
+        transform: translate(20px, 30px) scale(1.05);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.contact-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(78, 52, 46, 0.95) 0%, rgba(46, 39, 35, 0.95) 100%);
+    padding: 2rem 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Header Section */
+.contact-header {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: white;
+}
+
+.contact-header h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #C49A6C, #F5E9DD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-header p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    color: #F5E9DD;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Main Content */
+.contact-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Form Section */
+.form-section {
+    width: 100%;
+}
+
+.form-card {
+    background: rgba(255, 248, 240, 0.95);
+    border-radius: 25px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.form-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #4E342E;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.form-card h2 i {
+    color: #C49A6C;
+}
+
+/* Form Styles */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #4E342E;
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    padding: 0.9rem 1.2rem;
+    border: 2px solid rgba(196, 154, 108, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.7);
+    color: #4E342E;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #C49A6C;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(196, 154, 108, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, #C49A6C, #A1887F);
+    border: none;
+    border-radius: 15px;
+    padding: 1rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(196, 154, 108, 0.4);
+}
+
+.submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Info Section */
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* 3D Interactive Video Container */
+.video-container-3d {
+    width: 100%;
+    height: 400px;
+    background: rgba(255, 248, 240, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.video-container-3d:hover {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+}
+
+.contact-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 25px;
+    display: block;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(196, 154, 108, 0.1) 0%,
+        rgba(161, 136, 127, 0.05) 100%
+    );
+    pointer-events: none;
+    border-radius: 25px;
+    transition: opacity 0.3s ease;
+}
+
+.video-container-3d:hover .video-overlay {
+    opacity: 0.5;
+}
+
+/* Info Cards */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.info-card {
+    background: rgba(255, 248, 240, 0.95);
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.info-card .icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #C49A6C, #A1887F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.info-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    color: #4E342E;
+    margin-bottom: 0.5rem;
+}
+
+.info-card p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    color: #A1887F;
+    margin: 0.2rem 0;
+}
+
+/* Social Section */
+.social-section {
+    background: rgba(255, 248, 240, 0.95);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.social-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    color: #4E342E;
+    margin-bottom: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #C49A6C, #A1887F);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(196, 154, 108, 0.4);
+}
+
+/* Success Modal */
+.success-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #FFF8F0, #F5E9DD);
+    border-radius: 25px;
+    padding: 3rem;
+    max-width: 400px;
+    text-align: center;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.modal-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.8rem;
+    color: #4E342E;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: #A1887F;
+    margin-bottom: 2rem;
+}
+
+.modal-close-btn {
+    background: linear-gradient(135deg, #C49A6C, #A1887F);
+    border: none;
+    border-radius: 12px;
+    padding: 0.8rem 2rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(196, 154, 108, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .info-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .contact-header p {
+        font-size: 1rem;
+    }
+
+    .form-card {
+        padding: 2rem;
+    }
+
+    .video-container-3d {
+        height: 300px;
+    }
+
+    .info-cards {
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-header h1 {
+        font-size: 2rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .form-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .video-container-3d {
+        height: 250px;
+    }
+
+    .social-links {
+        gap: 0.8rem;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+
+/* Additional Blob Animations */
+.blob::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(196, 154, 108, 0.1), transparent);
+    animation: pulse 4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.2;
+    }
+}
+
+/* Blob specific animations */
+.blob-1 .hand-sign {
+    animation-duration: 12s;
+}
+
+.blob-2 .hand-sign {
+    animation-duration: 18s;
+    animation-direction: reverse;
+}
+
+.blob-3 .hand-sign {
+    animation-duration: 15s;
+}
+
+.blob-4 .hand-sign {
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
+
+.blob-5 .hand-sign {
+    animation-duration: 14s;
+}
+
+.blob-6 .hand-sign {
+    animation-duration: 16s;
+    animation-direction: reverse;
+}
+
+/* Responsive blob sizes */
+@media (max-width: 768px) {
+    .blob {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .blob .hand-sign {
+        font-size: 2.5rem;
+    }
+    
+    .blob-3, .blob-5 {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .blob {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .blob .hand-sign {
+        font-size: 2rem;
+    }
+    
+    .blob-4, .blob-6 {
+        display: none;
+    }
+}
+
+
+/* Additional Animated Background Effects - CONSOLIDATED */
+.animated-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(196, 154, 108, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(161, 136, 127, 0.25) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(245, 233, 221, 0.15) 0%, transparent 50%);
+    animation: gradient-shift 20s ease-in-out infinite;
+    z-index: 1;
+}
+
+.animated-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(196, 154, 108, 0.15) 0%,
+        transparent 25%,
+        rgba(161, 136, 127, 0.15) 50%,
+        transparent 75%,
+        rgba(196, 154, 108, 0.15) 100%
+    );
+    background-size: 200% 200%;
+    animation: gradient-move 15s ease infinite;
+    z-index: 2;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes gradient-move {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+    .wave {
+        width: 300%;
+        height: 300%;
+    }
+    
+    .particle {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .particle:nth-child(n+6) {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wave,
+    .particle,
+    .animated-background::before,
+    .animated-background::after {
+        animation: none;
+    }
+}
+
+
+/* Additional Visible Animated Shapes */
+.animated-background {
+    background: 
+        linear-gradient(135deg, #4E342E 0%, #2E2723 100%),
+        radial-gradient(circle at 10% 20%, rgba(196, 154, 108, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(161, 136, 127, 0.2) 0%, transparent 50%);
+}
+
+/* Ensure waves are visible */
+.wave {
+    will-change: transform;
+    transform-origin: center center;
+}
+
+/* Ensure particles are visible */
+.particle {
+    will-change: transform, opacity;
+}
+
+/* Make blobs more visible */
+.blob {
+    opacity: 0.2;
+}
+
+.blob .hand-sign {
+    opacity: 0.4;
+}
+
+/* Fix navbar spacing issues */
+.navbar {
+    margin: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100vw !important;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* Ensure no gaps around navbar */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
